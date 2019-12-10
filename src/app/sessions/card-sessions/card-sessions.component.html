@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+
+    <h6 class="col">{{session.dateDeb.seconds * 1000 | date:'HH:mm, EEEE d MMMM y':undefined :"fr"}}</h6>
+
+    <button mat-raised-button class="col-1" *ngIf="session.inscrit" matTooltip="Exporter vers Outlook" onclick=""><img
+        src="assets\images\outlookPetit.png" alt="logo Outlook"></button>
+    <div *ngIf="session.inscrit, else inscription">
+      <button mat-raised-button matTooltip="Se désinscrire" class="col" color="accent" (click)="openDialog()">Se
+        désinscrire</button>
+    </div>
+  </div>
+</div>
+<ng-template #inscription class="col">
+  <button mat-raised-button matTooltip="Vers l'incripstion" color="primary" (click)="openDialog()">Plus
+    d'informtaions</button>
+</ng-template>

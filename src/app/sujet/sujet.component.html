@@ -1,0 +1,28 @@
+<div class="sujet alternative">
+  <div class="filtres">
+    <h1>Sujets Learning Factory:</h1>
+    <mat-form-field>
+      <mat-label>Sujet</mat-label>
+      <mat-select [formControl]="sujetCtrl">
+        <mat-option [value]="Tous">Tous</mat-option>
+        <mat-option *ngFor="let sujet of sujets" [value]="sujet.name">
+          <img class="example-option-img" aria-hidden [src]="sujet.img" height="25">
+          {{sujet.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class=" col-4" *ngFor="let item of (sujets | topicFilters : sujetCtrl.value)">
+        <button mat-raised-button matTooltip=" Cliquez moi!" (click)="goToModule(item.name)" class="sujet">
+          <img src="{{item.img}}" class="images" alt="Photo of sujet">
+          <div>
+            <h4>{{item.name}}</h4>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>

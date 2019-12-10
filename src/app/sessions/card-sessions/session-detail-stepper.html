@@ -1,0 +1,51 @@
+<div class="alternative" cdkFocusInitial>
+  <div>
+    <div>
+      <div class="col-6 offset-3 titre">
+        <h4>{{data.session.date | date:'HH:mm, EEEE d MMMM y':undefined :"fr"}}</h4>
+      </div>
+      <div class="row contenu">
+        <div class="col-4 offset-1">
+          <mat-card-content style="text-align: justify">
+            <h4>Description</h4>
+            <p *ngIf="data.session.description; else description">
+              {{data.session.description}}
+            </p>
+            <h6>La session sera animée par: {{sachant.firstName}} {{sachant.lastName}} <img
+                style="width:60px;height:60px;" mat-card-avatar src="{{sachant.img}}"></h6>
+                <button mat-raised-button onclick=""> <img src="assets\images\outlook.png" alt="logo Outlook"> Exporter</button>
+          </mat-card-content>
+        </div>
+        <div class="col-2">
+        </div>
+        <div label="Déja inscrits" class="col-4">
+          <h3>Liste des participants:</h3>
+          <mat-list class="listParticipants">
+            <mat-list-item *ngFor="let learner of data.learners; last as last">
+              <img style="height:100%" src="{{learner.img}}" alt="Photo of a Shiba Inu">
+              <h2 matLine>{{learner.firstname}} {{learner.name}}</h2>
+              <p matLine>{{learner.job}}</p>
+              <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+      <div mat-dialog-actions class="col-3 offset-5 controlBouton">
+        <button mat-raised-button (click)="onNoClick()">Retour</button>
+        <button mat-raised-button color="accent" [mat-dialog-close]="false">Inscrire mon équipe</button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <ng-template #description>
+    <div class="alert alert-danger">Désolé, Le sachant n'a pas rédiger de description pour cette session.</div>
+  </ng-template>
+
+
+
+
+
+
+

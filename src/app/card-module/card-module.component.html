@@ -1,0 +1,16 @@
+<mat-card class="example-card alternative">
+  <mat-card-content>
+    <h4>
+      <ngb-rating max=3 [readonly]="true" [(rate)]="module.level"></ngb-rating>
+    </h4>
+    <h5>{{module.titre}}</h5>
+    <br>
+    <p>
+      {{module.description}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" [routerLink]="['detail',module.id]" matTooltip=" Cliquez moi!">Choisir</button>
+  </mat-card-actions>
+</mat-card>
+

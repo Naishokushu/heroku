@@ -1,0 +1,44 @@
+<div class="module alternative">
+  <div class="filtres" *ngIf="Modules; else elseTemplate">
+    <h1 class="text-center">Modules Learning Factory:</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-1">
+          <button mat-button [routerLink]="['/sujets']">{{sujet[0].name}}</button>
+        </div>
+        <mat-form-field class="col-md-2 offset-4">
+          <mat-select placeholder="Niveau" [formControl]="levels">
+            <mat-select-trigger color="primary">
+              <ngb-rating max=3 [readonly]="true" [(rate)]="levels.value"></ngb-rating>
+            </mat-select-trigger>
+            <mat-option [value]="">Tous</mat-option>
+            <mat-option *ngFor="let level of levelList" [value]="level">
+              <ngb-rating max=3 [readonly]="true" [(rate)]="level"></ngb-rating>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="carousel-manual-item col-4" *ngFor="let item of (Modules | levelPipe : levels.value )">
+        <app-card-module [module]="item"></app-card-module>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-1 retour" *ngIf="Modules">
+    <button mat-raised-button [routerLink]="['../']" color="primary">Retour</button>
+  </div>
+  <ng-template #elseTemplate>
+
+    <mat-card class=" text-center col-2 offset-5  noModule">
+      il n'existe pas encore de module pour ce sujet.
+      <div>
+        <button mat-raised-button [routerLink]="['../']" color="primary">Retour</button>
+      </div>
+    </mat-card>
+  </ng-template>
+
+
+</div>
