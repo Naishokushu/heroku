@@ -1,4 +1,3 @@
-
 import { Tipser, Follower } from './user.model';
 
 export class Session  {

@@ -1,5 +1,4 @@
 import { Module } from './module.model';
-import { Deserializable } from './deserializable.model';
 
 
 export class Sujet {
