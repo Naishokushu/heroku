@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import * as moduleData from './data/module.json';
-import { Module } from '@core/models/Module.model';
 
 @Injectable({
   providedIn: 'root'
