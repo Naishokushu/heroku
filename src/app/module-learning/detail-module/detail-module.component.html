@@ -1,13 +1,13 @@
 <div class=" alternative detail-Module">
-  <div class="container-fluid">
+  <div class="container">
     <button mat-button [routerLink]="['/sujets']">{{sujet[0].name}} ></button>
     <button mat-button onclick="history.go(-1)">
       <ngb-rating max=3 [readonly]="true" [(rate)]="module.level"></ngb-rating>
     </button>
   </div>
-  <div class="container card">
+  <div class="container ">
     <div class="row">
-      <div class="col" label="Description">
+      <div class="col card session" label="Description">
         <h1 class="titre">{{module.titre}}</h1>
         <div class="container">
           <div class="row">
@@ -22,7 +22,7 @@
         </div>
 
       </div>
-      <div class="col" label="Sessions">
+      <div class="col card session" label="Sessions">
 
         <mat-tab-group mat-stretch-tabs>
           <mat-tab>
@@ -87,16 +87,19 @@
         </mat-tab-group>
       </div>
     </div>
-    <div class="row">
-        <div class="col"></div>
-        <div class="alert alert-info">Aucun horraies ne vous convient, demander la création d'une session.</div>
-        <div class="col"></div>
+    <div class="container">
+      <div class="card col-6 offset-3 message">
+        <div class="row">
+          <div class=" col-10 offset-1 alert alert-info">Aucun horraies ne vous convient, demander la création d'une session.</div>
+        </div>
+
+        <div class="row">
+          <div class="col"></div>
+          <button mat-raised-button class="col" color="accent"
+            matTooltip=" Demander la création d'une session">Demander</button>
+          <div class="col"></div>
+        </div>
       </div>
-    <div class="row">
-      <div class="col"></div>
-      <button mat-raised-button class="col-md-1" color="accent"
-      matTooltip=" Demander la création d'une session">Demander</button>
-      <div class="col"></div>
     </div>
   </div>
   <button mat-raised-button class="col-1 retour" onclick="history.go(-1)" color="primary">Retour</button>
