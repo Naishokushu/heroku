@@ -1,27 +1,29 @@
 <div class="module alternative">
-  <div class="card col-8 offset-2">
-    <div class="filtres" *ngIf="Modules; else elseTemplate">
-      <h1 class="text-center">Modules Learning Factory:</h1>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-1">
-            <button mat-button [routerLink]="['/sujets']">{{sujet[0].name}}</button>
+  <div class=" col-8 offset-2">
+    <div class="container card">
+      <div class="filtres" *ngIf="Modules; else elseTemplate">
+        <h1 class="text-center">Modules Learning Factory:</h1>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-1">
+              <button mat-button [routerLink]="['/sujets']">{{sujet[0].name}}</button>
+            </div>
+            <mat-form-field class="col-md-2 offset-4">
+              <mat-select placeholder="Niveau" [formControl]="levels">
+                <mat-select-trigger color="primary">
+                  <ngb-rating max=3 [readonly]="true" [(rate)]="levels.value"></ngb-rating>
+                </mat-select-trigger>
+                <mat-option [value]="">Tous</mat-option>
+                <mat-option *ngFor="let level of levelList" [value]="level">
+                  <ngb-rating max=3 [readonly]="true" [(rate)]="level"></ngb-rating>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
-          <mat-form-field class="col-md-2 offset-4">
-            <mat-select placeholder="Niveau" [formControl]="levels">
-              <mat-select-trigger color="primary">
-                <ngb-rating max=3 [readonly]="true" [(rate)]="levels.value"></ngb-rating>
-              </mat-select-trigger>
-              <mat-option [value]="">Tous</mat-option>
-              <mat-option *ngFor="let level of levelList" [value]="level">
-                <ngb-rating max=3 [readonly]="true" [(rate)]="level"></ngb-rating>
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container card list">
       <div class="row">
         <div class="carousel-manual-item col-4" *ngFor="let item of (Modules | levelPipe : levels.value )">
           <app-card-module [module]="item"></app-card-module>
