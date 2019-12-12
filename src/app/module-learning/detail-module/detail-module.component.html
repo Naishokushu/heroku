@@ -1,15 +1,16 @@
 <div class=" alternative detail-Module">
   <div class="container card">
+    <h1 class="col text-center">{{module.titre}}</h1>
     <div class="row retour">
       <button mat-raised-button class="col-1" onclick="history.go(-1)" color="primary">Retour</button>
       <button mat-button class="col-1" [routerLink]="['/sujets']">{{sujet[0].name}} ></button>
       <button mat-button class="col-1" onclick="history.go(-1)">
         <ngb-rating max=3 [readonly]="true" [(rate)]="module.level"></ngb-rating>
       </button>
-      <h1 class="col-5 offset-1 ">{{module.titre}}</h1>
+
     </div>
   </div>
-  <div class="container">
+  <div class="container"> 
     <div class="row">
       <div class="col card session" label="Description">
         <div class="container">
@@ -20,13 +21,10 @@
             <div class="description col-md-8 offset-2  text-justify">
               {{module.description}}
             </div>
-
           </div>
         </div>
-
       </div>
       <div class="col card session" label="Sessions">
-
         <mat-tab-group mat-stretch-tabs>
           <mat-tab>
             <ng-template mat-tab-label>
