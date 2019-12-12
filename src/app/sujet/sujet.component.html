@@ -15,7 +15,7 @@
         </mat-form-field>
       </div>
     </div>
-    <div class="container card list">
+    <div class="container list">
       <div class="row">
         <div class=" col-4" *ngFor="let item of (sujets | topicFilters : sujetCtrl.value)">
           <button mat-raised-button matTooltip=" Cliquez moi!" (click)="goToModule(item.name)" class="sujet">
