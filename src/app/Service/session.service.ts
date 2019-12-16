@@ -35,6 +35,7 @@ export class SessionService {
       });
     }));
   }
+  
   getSessions(idSujet: string, idModule: string) {
     return this.sessionTable = this.getAllSession(idSujet, idModule).snapshotChanges().pipe(map(modules => modules.map(m => {
       const data = m.payload.doc.data() as Session;
@@ -60,9 +61,14 @@ export class SessionService {
     }
     ));
   }
-
-  getUsers(idArray: []) {
-
+  getIDSachant(email: string) {
+    return this.db.collection('users', ref => ref.where('Email', '==', email)).snapshotChanges().pipe(map(sachant => {
+      return sachant.map(s => {
+        const data = s.payload.doc.data();
+        const id = s.payload.doc.id;
+        return { id, ...data };
+      });
+    }));
   }
 
   createSession(dateDeb: number, dateFin: number, sachant: string, followers: [], description: string, idSujet: string, sujet: string, idModule: string, nameModule: string) {
@@ -81,7 +87,8 @@ export class SessionService {
     return this.db.collection('topics').doc(idSujet).collection('modules').doc(idModule).collection('modules').doc(idDoc).delete();
   }
 
-  updateSession(idSujet: string, NewIdSujet: string, oldIdModule: string, newIdModule: string, idDoc: string, dateDeb: any, description: string, dateFin: any, sachant: [], followers: []): Promise<void> {
+  updateSession(idSujet: string, NewIdSujet: string, oldIdModule: string, newIdModule: string, idDoc: string,
+    dateDeb: any, description: string, dateFin: any, sachant: string, sujetName: string, nameModule: string, followers: []): Promise<void> {
     if (dateDeb !== "") {
       return this.db.collection('topics').doc(idSujet).collection('modules').doc(oldIdModule).collection('modules').doc(idDoc).update({ dateDeb: dateDeb });
     }
@@ -95,7 +102,7 @@ export class SessionService {
       return this.db.collection('topics').doc(idSujet).collection('modules').doc(oldIdModule).collection('modules').doc(idDoc).update({ dateFin: dateFin });
     }
     if (module !== null) {
-      this.createSession(dateDeb, dateFin, sachant, followers, description, NewIdSujet, newIdModule);
+      this.createSession(dateDeb, dateFin, sachant, followers, description, NewIdSujet, sujetName, newIdModule, nameModule);
       return this.deleteSession(idSujet, oldIdModule, idDoc);
     }
     ;

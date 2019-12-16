@@ -52,7 +52,7 @@ export class ListSessionComponent implements AfterViewInit {
   ];
 
   public sujet: any;
-  
+  public sachant: any;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -65,7 +65,7 @@ export class ListSessionComponent implements AfterViewInit {
       data.map(e => {
         e.sachant = this.sessionService.getSachant(e.sachant).subscribe(Sachant => {
           e.sachant = Sachant.data;
-          console.log('sachant :',e.sachant);
+          console.log('sachant :', e.sachant);
         });
       });
       this.dataSource.data = data;
@@ -86,14 +86,14 @@ export class ListSessionComponent implements AfterViewInit {
       duration: 2000,
     });
   }
-  updateSession(idSujet: string, NewIdSujet: string, oldIdModule: string, newIdModule: string, idDoc: string, dateDeb: any, description: string, dateFin: any, sachant: [], followers: []) {
-    this.sessionService.updateSession(idSujet, NewIdSujet, oldIdModule, newIdModule, idDoc, dateDeb, description, dateFin, sachant, followers).then(() => {
-      this.openSnackBar('Modification Réussie', 'Fermer');
-    },
-      (error) => {
-        this.openSnackBar(' Erreur lors de la sauvegarde', 'Fermer');
-      });
-  }
+  // updateSession(idSujet: string, NewIdSujet: string, oldIdModule: string, newIdModule: string, idDoc: string, dateDeb: any, description: string, dateFin: any, sachant: [], followers: []) {
+  //   this.sessionService.updateSession(idSujet, NewIdSujet, oldIdModule, newIdModule, idDoc, dateDeb, description, dateFin, sachant, followers).then(() => {
+  //     this.openSnackBar('Modification Réussie', 'Fermer');
+  //   },
+  //     (error) => {
+  //       this.openSnackBar(' Erreur lors de la sauvegarde', 'Fermer');
+  //     });
+  // }
   createSession(dateDeb: number, dateFin: number, sachant: string, followers: [], description: string, idSujet: string, sujet: string, idModule: string, nameModule: string) {
 
     this.sessionService.createSession(dateDeb, dateFin, sachant, followers, description, idSujet, sujet, idModule, nameModule);
@@ -119,10 +119,15 @@ export class ListSessionComponent implements AfterViewInit {
           this.sujet = sujet;
           console.log(this.sujet[0]);
           this.moduleService.getSingleModule(this.sujet[0].id, m[1].module).subscribe(modul => {
-            console.log(modul);
+            console.log('cecice est le module', modul);
+            const modula: any = modul;
             const user = firebase.auth().currentUser;
-            this.createSession(dateDeb, dateFin, user.uid, [], m[2].description, this.sujet[0].id, m[1].sujet, m[1].module, modul.titre);
-          })
+            this.sessionService.getIDSachant(user.email).subscribe(sachants => {
+              this.sachant = sachants;
+              console.log('c\'est un sachan:', this.sachant[0].id);
+              this.createSession(dateDeb, dateFin, this.sachant[0].id, [], m[2].description, this.sujet[0].id, m[1].sujet, m[1].module, modula.titre);
+            })
+          });
         });
 
       }
