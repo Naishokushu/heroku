@@ -52,6 +52,7 @@ export class ListSessionComponent implements AfterViewInit {
   ];
 
   public sujet: any;
+  
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -61,8 +62,13 @@ export class ListSessionComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.sessionService.getEverySession().subscribe(data => {
+      data.map(e => {
+        e.sachant = this.sessionService.getSachant(e.sachant).subscribe(Sachant => {
+          e.sachant = Sachant.data;
+          console.log('sachant :',e.sachant);
+        });
+      });
       this.dataSource.data = data;
-      console.log(this.dataSource.data);
     });
 
     this.dataSource.paginator = this.paginator;
@@ -88,9 +94,9 @@ export class ListSessionComponent implements AfterViewInit {
         this.openSnackBar(' Erreur lors de la sauvegarde', 'Fermer');
       });
   }
-  createSession(dateDeb: number, dateFin: number, sachant: any, followers: [], description: string, idSujet: string, idModule: string) {
+  createSession(dateDeb: number, dateFin: number, sachant: string, followers: [], description: string, idSujet: string, sujet: string, idModule: string, nameModule: string) {
 
-    this.sessionService.createSession(dateDeb, dateFin, sachant, followers, description, idSujet, idModule);
+    this.sessionService.createSession(dateDeb, dateFin, sachant, followers, description, idSujet, sujet, idModule, nameModule);
   }
 
   openDialogCreate() {
@@ -111,8 +117,12 @@ export class ListSessionComponent implements AfterViewInit {
         const dateFin = dateDeb + m[0].duree * 60 * 60;
         this.moduleService.getID(m[1].sujet).subscribe(sujet => {
           this.sujet = sujet;
-          console.log(this.sujet[0].id);
-          this.createSession(dateDeb, dateFin, [], [], m[2].description, this.sujet[0].id, m[1].module);
+          console.log(this.sujet[0]);
+          this.moduleService.getSingleModule(this.sujet[0].id, m[1].module).subscribe(modul => {
+            console.log(modul);
+            const user = firebase.auth().currentUser;
+            this.createSession(dateDeb, dateFin, user.uid, [], m[2].description, this.sujet[0].id, m[1].sujet, m[1].module, modul.titre);
+          })
         });
 
       }

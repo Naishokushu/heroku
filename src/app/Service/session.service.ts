@@ -65,14 +65,15 @@ export class SessionService {
 
   }
 
-  createSession(dateDeb: number, dateFin: number, sachant: [], followers: [], description: string, idSujet: string, idModule: string) {
+  createSession(dateDeb: number, dateFin: number, sachant: string, followers: [], description: string, idSujet: string, sujet: string, idModule: string, nameModule: string) {
     this.db.collection('topics').doc(idSujet).collection('modules').doc(idModule).collection('sessions').add({
       dateDeb: new firebase.firestore.Timestamp(dateDeb, 0),
       dateFin: new firebase.firestore.Timestamp(dateFin, 0),
       sachant: sachant,
       description: description,
       followers: followers,
-      module: [idModule, ''],
+      module: [idModule, nameModule],
+      sujet: sujet,
       type: 'créée'
     });
   }

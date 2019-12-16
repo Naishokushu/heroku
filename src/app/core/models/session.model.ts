@@ -2,7 +2,7 @@ import { Tipser, Follower } from './user.model';
 
 export class Session  {
     public id: string;
-    public tipser: Tipser;
+    public sachant: any;
     public followers: Follower[];
     public level: number;
     public topic: string;

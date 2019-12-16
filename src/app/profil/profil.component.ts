@@ -4,6 +4,7 @@ import { User } from '../core/models/user.model';
 import { FormControl, Validators } from '@angular/forms';
 import * as firebase from 'firebase';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-profil',
@@ -24,7 +25,7 @@ export class ProfilComponent implements OnInit {
   }
 
 
-  constructor(public ProfilService: ProfilService, private snackBar: MatSnackBar) {
+  constructor(public ProfilService: ProfilService, private snackBar: MatSnackBar, private db: AngularFirestore) {
 
   }
 
