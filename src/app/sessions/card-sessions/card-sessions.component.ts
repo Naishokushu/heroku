@@ -13,6 +13,7 @@ import { QuestionBase } from '../../dynamicForms/question-base';
 })
 export class SessionDetail {
   public sachant: any;
+  public fields = [];
 
   constructor(public dialogRef: MatDialogRef<SessionDetail>, @Inject(MAT_DIALOG_DATA) public data: any, public sessionService: SessionService) {
 
@@ -22,6 +23,10 @@ export class SessionDetail {
       console.log(this.sachant);
     }
     );
+  }
+
+  addField() {
+    this.fields.push('');
   }
 
   onNoClick(): void {
@@ -47,9 +52,9 @@ export class CardSessionsComponent implements AfterViewInit {
       height: '65%',
       data: {
         session: this.session,
-
       }
     });
+
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
         console.log('la modal a été fermé et tu es inscrit');

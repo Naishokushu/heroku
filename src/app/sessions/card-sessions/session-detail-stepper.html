@@ -21,9 +21,15 @@
           <h3>email Equipier:</h3>
           <!-- Faire un tableau et looper à traver pour créer des champs il faut à ajouter une ligne au tableau à chaque plus
           -->
-          <button mat-fab color="accent" ><mat-icon>add</mat-icon></button>
-          <div *ngFor="let field of fields">
-
+          <button mat-fab color="accent" (click)="addField()">
+            <mat-icon>add</mat-icon>
+          </button>
+          <div class="row">
+            <div clas="col-5 offset-1" *ngFor="let field of fields">
+              <mat-form-field>
+                <input matInput placeholder="Email coequipier">
+              </mat-form-field>
+            </div>
           </div>
         </div>
       </div>
@@ -39,10 +45,3 @@
   <ng-template #description>
     <div class="alert alert-danger">Désolé, Le sachant n'a pas rédiger de description pour cette session.</div>
   </ng-template>
-
-
-
-
-
-
-
