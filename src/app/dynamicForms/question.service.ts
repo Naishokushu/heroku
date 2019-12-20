@@ -37,12 +37,12 @@ export class QuestionService {
   // TODO: make asynchronous
   getQuestions(modulData) {
     let questions: QuestionBase<any>[] = [];
-    console.log(modulData);
-
-    let globalQuestionType = modulData.sessionEval.questionAnswers.globalQuestionType;
-    let globalAnswerList = modulData.sessionEval.questionAnswers.globalAnswerList;
-    let globalDefaultValue = modulData.sessionEval.questionAnswers.globalDefaultValue;
-    modulData.sessionEval.questionAnswers.questionList.forEach((quest, key) => {
+    console.log("module data:", modulData);
+    console.log("questions :", modulData.default.sessionEval.questionAnswers);
+    let globalQuestionType = modulData.default.sessionEval.questionAnswers.globalQuestionType;
+    let globalAnswerList = modulData.default.sessionEval.questionAnswers.globalAnswerList;
+    let globalDefaultValue = modulData.default.sessionEval.questionAnswers.globalDefaultValue;
+    modulData.default.sessionEval.questionAnswers.questionList.forEach((quest, key) => {
       questions.push(this.questionFactory(quest, globalQuestionType, globalAnswerList, globalDefaultValue, key));
       console.log(this.questionFactory(quest, globalQuestionType, globalAnswerList, globalDefaultValue, key));
     });

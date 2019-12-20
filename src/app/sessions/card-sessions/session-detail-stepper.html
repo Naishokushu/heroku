@@ -18,17 +18,19 @@
         <div class="col-2">
         </div>
         <div label="Déja inscrits" class="col-4">
-          <h3>email Equipier:</h3>
+          <h3>email Equipier: <button mat-fab color="accent" (click)="addField()">
+              <mat-icon>add</mat-icon>
+            </button></h3>
           <!-- Faire un tableau et looper à traver pour créer des champs il faut à ajouter une ligne au tableau à chaque plus
           -->
-          <button mat-fab color="accent" (click)="addField()">
-            <mat-icon>add</mat-icon>
-          </button>
-          <div class="row">
-            <div clas="col-5 offset-1" *ngFor="let field of fields">
-              <mat-form-field>
-                <input matInput placeholder="Email coequipier">
-              </mat-form-field>
+
+          <div class="container">
+            <div class="row">
+              <div *ngFor="let field of fields" class="col-5">
+                <mat-form-field>
+                  <input matInput placeholder="Email coequipier">
+                </mat-form-field>
+              </div>
             </div>
           </div>
         </div>

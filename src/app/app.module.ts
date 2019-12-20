@@ -1,3 +1,4 @@
+import { QuestionService } from './dynamicForms/question.service';
 import { AngularFirestore, FirestoreSettingsToken } from '@angular/fire/firestore';
 
 
@@ -68,6 +69,7 @@ import { AdministrationComponent } from './administration/administration.compone
 import { ListModuleComponent, ModuleDetail, ModuleCreate } from './list/list-module/list-module.component';
 import { ListSessionComponent, SessionCreate } from './list/list-session/list-session.component';
 import { CreateModulePipePipe } from './Pipe/create-module-pipe.pipe';
+import { ExamComponent } from './exam/exam.component';
 
 
 
@@ -113,7 +115,8 @@ registerLocaleData(localeFr, 'fr');
     ListSessionComponent,
     SessionDetail,
     SessionCreate,
-    CreateModulePipePipe
+    CreateModulePipePipe,
+    ExamComponent
   ],
   imports: [
     MaterialModule,
@@ -155,7 +158,7 @@ registerLocaleData(localeFr, 'fr');
     ModuleDetail,
     ModuleCreate
   ],
-  providers: [MatNativeDateModule, MatDatepickerModule, AngularFirestore, { provide: FirestoreSettingsToken, useValue: {} },
+  providers: [QuestionService,MatNativeDateModule, MatDatepickerModule, AngularFirestore, { provide: FirestoreSettingsToken, useValue: {} },
     { provide: MAT_DATE_LOCALE, useValue: 'fr' },
     { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
     { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS }],

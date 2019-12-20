@@ -2,7 +2,7 @@
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
 
     <div *ngFor="let question of questions" class="form-group row">
-      <app-question [question]="question" class="col-12" [form]="form"></app-question>
+      <app-question [question]="question" class="col" [form]="form"></app-question>
     </div>
 
     <!-- <div class="form-row">

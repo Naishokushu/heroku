@@ -17,6 +17,7 @@ import { EditSujetComponent } from './edit-sujet/edit-sujet.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { ListModuleComponent } from './list/list-module/list-module.component';
 import { ListSessionComponent } from './list/list-session/list-session.component';
+import { ExamComponent } from './exam/exam.component';
 
 const routes: Routes = [
 
@@ -32,6 +33,11 @@ const routes: Routes = [
     path: 'sujets',
     canActivate: [AuthGuardService],
     component: SujetComponent,
+  },
+  {
+    path: 'tests',
+    canActivate: [AuthGuardService],
+    component: ExamComponent,
   },
   {
     path: 'sujets/:sujet',

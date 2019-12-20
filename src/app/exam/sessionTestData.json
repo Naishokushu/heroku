@@ -1,0 +1,70 @@
+{
+  "sessionEval": {
+    "id": "1",
+    "questionAnswers": {
+      "globalQuestionType": "starScored",
+      "globalDefaultValue": 1,
+      "globalAnswerList": ["newbie", "j'ai vu faire", "je pourrais le faire", "les yeux fermés"],
+      "questionList": [{
+          "label": "Savoir mettre en place le framework de test (Karma, Jasmine, angular-cli)"
+        },
+        {
+          "label": "Maitriser la structure d'un test unitaire avec karma (before, after, describe, it)"
+        },
+        {
+          "label": "Utiliser les assertions de Jasmine"
+        },
+        {
+          "label": "Déclarer le jeu de données"
+        },
+        {
+          "label": "Tester l'existence d'une propriété du composant"
+        },
+        {
+          "label": "Tester l'affichage par le DOM d'une propriété"
+        },
+        {
+          "label": "Tester une fonction (exemple: un reducer)"
+        },
+        {
+          "label": "Tester un service avec injection de dépendance"
+        },
+        {
+          "label": "Tester une méthode privée"
+        },
+        {
+          "label": "Tester une requête HTTP"
+        },
+        {
+          "label": "Mocker la méthode d'un objet"
+        },
+        {
+          "label": "Tester une méthode qui fait appel à un timer"
+        },
+        {
+          "label": "Savoir exécuter les tests unitaires existants sur mon poste de développement"
+        },
+        {
+          "label": "Savoir exécuter les tests unitaires en intégration continue (Jenkins)"
+        },
+        {
+          "label": "Savoir comment récupérer le taux de couverture de code par les tests unitaires"
+        },
+        {
+          "label": "Comprendre l'intérêt des Tests Unitaires"
+        },
+        {
+          "label": "Savoir ce qu'il faut tester et ce qu'il ne faut pas tester unitairement"
+        },
+        {
+          "label": "Savoir choisir son jeu de données de test"
+        },
+        {
+          "label": "Quel niveau global estimez-vous avoir sur la compétence transmise ?"
+        }
+
+
+      ]
+    }
+  }
+}
