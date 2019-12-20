@@ -28,42 +28,7 @@
         },
         {
           "label": "Tester un service avec injection de dépendance"
-        },
-        {
-          "label": "Tester une méthode privée"
-        },
-        {
-          "label": "Tester une requête HTTP"
-        },
-        {
-          "label": "Mocker la méthode d'un objet"
-        },
-        {
-          "label": "Tester une méthode qui fait appel à un timer"
-        },
-        {
-          "label": "Savoir exécuter les tests unitaires existants sur mon poste de développement"
-        },
-        {
-          "label": "Savoir exécuter les tests unitaires en intégration continue (Jenkins)"
-        },
-        {
-          "label": "Savoir comment récupérer le taux de couverture de code par les tests unitaires"
-        },
-        {
-          "label": "Comprendre l'intérêt des Tests Unitaires"
-        },
-        {
-          "label": "Savoir ce qu'il faut tester et ce qu'il ne faut pas tester unitairement"
-        },
-        {
-          "label": "Savoir choisir son jeu de données de test"
-        },
-        {
-          "label": "Quel niveau global estimez-vous avoir sur la compétence transmise ?"
         }
-
-
       ]
     }
   }
